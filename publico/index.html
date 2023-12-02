@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        df-messenger {
+         --df-messenger-bot-message: #878fac;
+         --df-messenger-button-titlebar-color: white;
+         --df-messenger-chat-background-color: #fafafa;
+         --df-messenger-font-color: white;
+         --df-messenger-send-icon: #878fac;
+         --df-messenger-user-message: #479b3d;
+        }
+      </style>
+</head>
+<body>
+   <h1>Bem vindo a Lanchonete da Maria</h1>
+   <h2>Fique a vontade para realizar um pedido.</h2>
+   <h3>Caso queira fazer um pedido, só mandar mensagem para nosso bot!</h3>
+</body>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="LanchoneteBot"
+  agent-id="eefee670-a572-4eb1-9828-56bd421c2baf"
+  language-code="pt-br"
+></df-messenger>
+</html>
