@@ -48,10 +48,10 @@ let lanche4 = new Lanche(
 
 let listaLanches = [lanche1, lanche2, lanche3, lanche4];
 
-// for (const lanche of listaLanches) {
-//     lanche.gravar().then(() => {
-//         console.log('Lanche gravado')
-//     }).catch((erro) => {
-//         console.log(erro)
-//     })
-// }
+for (const lanche of listaLanches) {
+    lanche.gravar().then(() => {
+        console.log('Lanche gravado')
+    }).catch((erro) => {
+        console.log(erro)
+    })
+}

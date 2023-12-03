@@ -12,15 +12,11 @@ export default class PedidoDAO {
       pedido.id = resultado[0].insertId;
 
       for (const item of pedido.itensPedidos) {
-        let sql = `SELECT codigo FROM lanche WHERE descricao like ?`;
-        const [registros] = await conexao.execute(sql, [
-          '%' + item.lanche + '%',
-        ]);
+        let sql = `SELECT codigo FROM lanche WHERE sabor like ?`;
+        const [registros] = await conexao.execute(sql, ['%'+ item.lanche +'%']);
         console.log(item.lanche, item)
         item.codigo = registros[0].codigo;
-        sql = `
-                INSERT INTO pedido_lanche(fk_id_pedido, fk_codigo_lanche, qtde) VALUES (?, ?, ?)
-            `;
+        sql = `INSERT INTO pedido_lanche(fk_id_pedido, fk_codigo_lanche, qtde) VALUES (?, ?, ?)`;
         parametros = [pedido.id, item.codigo, item.qtde];
         await conexao.execute(sql, parametros);
       }

@@ -53,7 +53,7 @@ export default class LancheDAO {
       sql = `SELECT * FROM lanche`;
     }
     const conexao = await conectar();
-    const [registros] = await conexao.execute(sql);
+    const [registros, campos] = await conexao.execute(sql);
     let listaLanches = [];
     for (const registro of registros) {
       const lanche = new Lanche(
