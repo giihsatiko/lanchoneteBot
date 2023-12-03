@@ -7,7 +7,7 @@ export default class DialogFlowCtrl {
     if (requisicao.method === "POST") {
       const intencao = requisicao.body.queryResult.intent.displayName;
       const origem = requisicao.body?.originalDetectIntentRequest?.source;
-      if (intencao === "IntencaoUsuario") {
+      if (intencao === "Pedido") {
         if (origem) {
           obterCardLanches("custom")
             .then((listaCards) => {
@@ -103,6 +103,7 @@ export default class DialogFlowCtrl {
             });
         }
       } else if (intencao === "RegistraEndereco") {
+        console.log(intencao);
         let lanches = [];
         let qtde = [];
 
@@ -118,9 +119,9 @@ export default class DialogFlowCtrl {
 
         for (let i = 0; i < lanches.length; i++) {
           itensPedido.push({
-            "codigo": 0,
-            "lanche": lanches[i],
-            "qtde": qtde[i],
+            codigo: 0,
+            lanche: lanches[i],
+            qtde: qtde[i],
           });
         }
         const enderecoEntrega = `Rua: ${requisicao.body.queryResult.parameters.location["street-address"]}`;
@@ -162,6 +163,7 @@ export default class DialogFlowCtrl {
             }
           })
           .catch((erro) => {
+            console.log(e);
             if (origem) {
               let respostaDF = {
                 fulfillmentMessages: [
